@@ -50,7 +50,7 @@ export default async function HomePage() {
               <span className="font-bold text-xl">Yangtze<span className="text-green-400">Compute</span></span>
             </div>
             <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
-              <a href="/ai-api" className="hover:text-white transition-colors text-blue-400">🤖 AI API</a>
+              <a href="/ai-api/models" className="hover:text-white transition-colors text-blue-400">🤖 AI Models</a>
               <a href="#products" className="hover:text-white transition-colors">Products</a>
               <a href="#features" className="hover:text-white transition-colors">Features</a>
               <a href="#about" className="hover:text-white transition-colors">About</a>
