@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CheckoutButton } from './components/CheckoutButton';
 
 const PLANS = [
   {
@@ -126,16 +127,13 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href={plan.name === 'Enterprise' ? '/contact' : '/auth/signup'}
-                  className={`block text-center py-3 rounded-lg font-medium transition-colors ${
-                    plan.highlight
-                      ? 'bg-blue-600 hover:bg-blue-500'
-                      : 'bg-gray-800 hover:bg-gray-700 border border-gray-700'
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
+                <CheckoutButton
+                  planSlug={plan.name.toLowerCase()}
+                  planName={plan.name}
+                  price={plan.price}
+                  highlight={plan.highlight}
+                  disabled={plan.name === 'Enterprise'}
+                />
               </div>
             ))}
           </div>
