@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /auth/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /supplier/
+Disallow: /reseller/
+
+Sitemap: https://yangtzecompute.com/sitemap.xml
