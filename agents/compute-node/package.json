@@ -1,0 +1,19 @@
+{
+  "name": "rivergpu-compute-node",
+  "version": "1.0.0",
+  "description": "算力调度网节点 Agent — 安装在 GPU 服务器上，连接调度网络",
+  "main": "node-agent.js",
+  "type": "module",
+  "scripts": {
+    "start": "node node-agent.js",
+    "dev": "node --watch node-agent.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "systeminformation": "^5.22.0",
+    "dockerode": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

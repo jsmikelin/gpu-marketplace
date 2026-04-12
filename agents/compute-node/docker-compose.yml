@@ -1,0 +1,38 @@
+# RiverGPU 算力节点 - Docker 部署
+# 复制到 GPU 服务器上运行
+
+version: '3.8'
+services:
+  rivergpu-node:
+    image: node:20-alpine
+    container_name: rivergpu-compute-node
+    restart: unless-stopped
+    environment:
+      - RGPU_NODE_TOKEN=${RGPU_NODE_TOKEN}
+      - RGPU_SCHEDULER_URL=${RGPU_SCHEDULER_URL:-https://rivergpu.com}
+    volumes:
+      # 挂载 GPU 和 Docker Socket
+      - /var/run/docker.sock:/var/run/docker.sock
+      # 模型存储（可选）
+      - ./models:/app/models:ro
+      # 输出目录
+      - ./output:/app/output
+    network_mode: host
+    # GPU 支持（如使用 NVIDIA Container Toolkit）
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    command: >
+      sh -c "npm install && node node-agent.js"
+    working_dir: /app
+
+# 使用方法:
+# 1. 在调度网后台注册节点，获取 Token
+# 2. 创建 .env 文件:
+#    RGPU_NODE_TOKEN=你的节点Token
+#    RGPU_SCHEDULER_URL=https://rivergpu.com
+# 3. 运行: docker-compose up -d
